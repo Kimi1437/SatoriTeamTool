@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>VerificationAlert</h2>
+The message is: @ViewBag.Message
+<br />
+the htmlMessage is:@ViewBag.qwe
+@using (Html.BeginForm("Index", "VerificationAlert", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <p>
+        AlertDate：
+        <input type="date" id="date" name="date" value="date"/>
+        VersionID: @Html.TextBox("versionID")
+        @Html.DropDownList("select")
+        <input type="submit" value="查询" />
+    </p>
+}
+<pre class="brush:c-sharp;"><iframe style="width:100%;height:800px" src="@ViewBag.Message" /></pre>
+<br>

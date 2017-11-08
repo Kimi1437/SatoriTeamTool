@@ -1,0 +1,136 @@
+﻿@*@model IEnumerable<SatoriTeamTool.Models.NeedCheckOrFixModel>*@
+@model PagedList.IPagedList<SatoriTeamTool.Models.NeedCheckOrFixModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Alert Index</h2>
+当前查询alert个数：@ViewBag.count
+
+@using (Html.BeginForm("Index", "NeedCheckModels", new { id = "checkForm" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <p>
+        查询Alert：
+        ModelAction: @Html.DropDownList("action", "All")
+        VersionID: @Html.TextBox("versionID")
+        ModelDate: <input type="date" id="date" name="date" value="@ViewBag.datemessage" />
+        <input type="submit" value="查询"  onclick="ok()"/>
+    </p>
+}
+
+@using (Html.BeginForm("Importexcel", "NeedCheckModels", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr><td>Excel批量导入：</td><td><input type="file" id="FileUpload1" name="FileUpload1" style="background-color:darkgray" /></td><td><input type="submit" id="Submit" name="Submit" value="提交" /></td></tr>
+    </table>
+}
+@using (Html.BeginForm("GetAlertDate", "NeedCheckModels", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr><td>输入Alert日期 ：</td><td><input type="date" id="date" name="date" /></td><td><input type="submit" id="Submit" name="Submit" value="确认" /></td></tr>
+    </table>
+}
+@*@Html.ActionLink("GetDailyAlert", "Index", "GetAlert")*@
+@using (Html.BeginForm("ExportToExcel", "NeedCheckModels", new { id = "exportForm" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+        
+        <tr><td>Excel批量导出：</td><td><input type="text" id="dateExport" name="dateExport" value="@ViewBag.datemessage" style="display:none;"/><input type="submit" id="Submit" name="Submit" value="提交" /></td></tr>
+}
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ModelDate)*@
+            @Html.ActionLink("ModelDate", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Ontology)*@
+            Ontology
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ModelID)*@
+            ModelID
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.VersionID)*@
+            @Html.ActionLink("ModelDate", "Index", new { sortOrder = ViewBag.VersionSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ModelName)*@
+            ModelName
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ModelOwner)*@
+            ModelOwner
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ModelAlertType)*@
+            ModelAlertType
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IssueSymptom)*@
+            IssueSymptom
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Action)*@
+            Action
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.CauseAnalysis)*@
+            CauseAnalysis
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ontology)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VersionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelName)
+            @*@Html.TextBoxFor(modelItem => item.ModelName, htmlAttributes: new Dictionary<string, object>() { { "readonly", "true" }, { "class", "inputarea" }, { "id", item.ID } })*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelOwner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelAlertType)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IssueSymptom)*@
+            @Html.TextBoxFor(modelItem => item.IssueSymptom, htmlAttributes: new Dictionary<string, object>() { { "readonly", "true" }, { "class", "inputarea" }, { "id", item.ID } })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Action)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseAnalysis)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+
+

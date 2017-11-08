@@ -1,0 +1,104 @@
+﻿@model SatoriTeamTool.Models.NeedCheckOrFixModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NeedCheckOrFixModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ontology)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ontology)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VersionID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VersionID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelOwner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelOwner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelAlertType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelAlertType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueSymptom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssueSymptom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CauseAnalysis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CauseAnalysis)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<SatoriTeamTool.Models.NeedCheckOrFixModel>
+
+@{
+    ViewBag.Title = "SearchIndex";
+}
+
+<h2>SearchIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        查询Alert：
+        ModelAction: @Html.DropDownList("action", "All")
+        VersionID: @Html.TextBox("versionID")
+        @*ModelDate: <input type="date" name="date" id="date" value="2016-03-26"/>*@
+        <input type="submit" value="查询" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ontology)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VersionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelOwner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelAlertType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IssueSymptom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CauseAnalysis)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ontology)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VersionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelOwner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModelAlertType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IssueSymptom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Action)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseAnalysis)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,98 @@
+﻿@model SatoriTeamTool.Models.NeedCheckOrFixModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NeedCheckOrFixModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ontology)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ontology)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VersionID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VersionID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelOwner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelOwner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelAlertType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelAlertType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueSymptom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssueSymptom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CauseAnalysis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CauseAnalysis)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
